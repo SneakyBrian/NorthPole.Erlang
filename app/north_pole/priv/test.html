@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>North Pole Test Page</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+<body>
+    <h1>North Pole Test Page</h1>
+    
+    <p>Enter some data:</p>
+    <textarea id="input" cols="40" rows="10">This is some test data</textarea>
+    
+    <p>Enter your unique key:</p>
+    <input id="key" type="text" value="some unique key" style="width: 100%;" />
+    
+    <p>Timestamp:</p>
+    <input id="timestamp" type="text" style="width: 100%;" />
+    
+    <p>HMAC:</p>
+    <input id="hmac" type="text" style="width: 100%;" />
+    
+    <p>Verify result: <span id="result"></span></p>
+    
+    <input id="generate" type="button" value="Generate HMAC" />
+    <input id="verify" type="button" value="Verify HMAC" />
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('#generate').click(function () {
+                $('#result').text('');
+                $.post('/elf?key=' + $('#key').val(),
+                    $('#input').text(),
+                    function (data) {
+                        var results = data.split("\n");
+                        $('#timestamp').val(results[0]);
+                        $('#hmac').val(results[1]);
+                    }, 'text');
+            });
+
+            $('#verify').click(function () {
+                $.post('/santa?key=' + $('#key').val() + '&timestamp=' + $('#timestamp').val() + '&hmac=' + $('#hmac').val(),
+                    $('#input').text(),
+                    function (result) {
+                        $('#result').text(result);
+                    }, 'text');
+            });
+
+        });
+    </script>
+
+</body>
+</html>

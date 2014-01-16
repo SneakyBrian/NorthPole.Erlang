@@ -1,0 +1,14 @@
+{application, north_pole, [
+    {description, "North Pole: A HTTP Post Data Signing and Verification Service"},
+    {vsn, git},
+    {modules, []},
+    {registered, [north_pole_sup]},
+    {applications, [
+        kernel,
+        stdlib,
+        cowboy
+    ]},
+    {mod, {north_pole, []}},
+    {env, []}
+]}.
+
