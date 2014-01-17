@@ -23,6 +23,9 @@
     
     <input id="generate" type="button" value="Generate HMAC" />
     <input id="verify" type="button" value="Verify HMAC" />
+	<input id="benchmark" type="button" value="Benchmark" />
+	
+	<p id="benchmarkcontainer" style="display:none;">Benchmark: <span id="benchmarkresult"></span></p>
 
     <script type="text/javascript">
         $(function () {
@@ -45,7 +48,28 @@
                         $('#result').text(result);
                     }, 'text');
             });
+			
+            $('#benchmark').click(function () {
+				var start = new Date().getTime(),
+					posts = 0,
+					$result = $('#benchmarkresult'),
+					doPost = function(){
 
+					$.post('/elf?key=benchmark_key',
+						'benchmark_data',
+						function (data) {
+							var elapsed = (new Date().getTime() - start) / 1000;
+							posts += 1;
+							$result.text('elf hashes per second: ' + (posts / elapsed));
+							doPost();
+						}, 'text');
+				};
+				
+				$(':button').prop("disabled",true);
+                $('#benchmarkcontainer').show();
+
+				doPost();
+            });
         });
     </script>
 
