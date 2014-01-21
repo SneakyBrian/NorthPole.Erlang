@@ -2,7 +2,7 @@
 
 ## A HTTP Post Data Signing and Verification Service, written in Erlang ##
 
-NorthPole.Erlang provides 2 HTTP end points that except any arbitrary POST data.
+NorthPole.Erlang provides 2 HTTP end points that accept any arbitrary POST data.
 
 `/elf` is the end point that signs the data with a timestamp and a HMAC
 
