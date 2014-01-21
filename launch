@@ -3,4 +3,5 @@
 erl \
  -pa deps/*/ebin \
  -pa app/*/ebin \
- -boot start_sasl
+ -boot start_sasl \
+ -run north_pole start
