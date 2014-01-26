@@ -64,7 +64,7 @@ is_old_enough(Timestamp) ->
 		% io:format("got NowTimestamp~n"),
 		Diff = NowTimestamp - list_to_integer(binary_to_list(Timestamp)),
 		if
-			Diff > 5 * 1000000 -> % 5 seconds
+			Diff > 3 * 1000000 -> % 3 seconds
 				true;
 			true -> % works as an 'else' branch
 				false
