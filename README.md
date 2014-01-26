@@ -30,4 +30,6 @@ This is a port of the ASP.NET project [NorthPole](https://github.com/SneakyBrian
 	* launch (will initialise the runtime environment and start the application)
     * available at http://localhost:4242/
 
+## Raspberry Pi Install ##
 
+Follow the guide [here](RPI_INSTALL.md).
