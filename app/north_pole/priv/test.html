@@ -42,7 +42,7 @@
             });
 
             $('#verify').click(function () {
-                $.post('/santa?key=' + $('#key').val() + '&timestamp=' + $('#timestamp').val() + '&hmac=' + $('#hmac').val(),
+                $.post('/santa?key=' + $('#key').val() + '&timestamp=' + $('#timestamp').val() + '&hmac=' + encodeURIComponent($('#hmac').val()),
                     $('#input').text(),
                     function (result) {
                         $('#result').text(result);
